@@ -9,14 +9,14 @@ box(df, var1, by1, by2)
 \arguments{
 \item{df}{data frame to read in.}
 
-\item{var1}{the variable of interest that should be plotted.}
+\item{var1}{the dependent/outcome variable, \eqn{Y}. The variable of interest that should be plotted.}
 
-\item{by1}{a grouping variable by which the histogram for \code{var1} should be parsed.}
+\item{by1}{the main independent/predictor variable, \eqn{X_1}. A grouping variable by which the boxplot for \code{var1} should be parsed.}
 
-\item{by2}{a potential second grouping variable by which the histogram for \code{var1} (already parsed by \code{by1}) should be parsed.}
+\item{by2}{a potential second independent/predictor variable, \eqn{X_2}. A second grouping variable by which the boxplot for \code{var1} (already parsed by \code{by1}) should be parsed.}
 }
 \description{
-This function plots a Box-and-Whisker (box) on a given data frame, and uses simplified calls within the function to parse the histogram by up to variables.
+This function plots a Box-and-Whisker (box) on a given data frame, and uses simplified calls within the function to parse the boxplot by up to 2 variables.
 }
 \examples{
 data <- mtcars

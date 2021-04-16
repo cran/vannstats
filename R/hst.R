@@ -1,12 +1,12 @@
 #' Simplified Histogram
 #'
-#' This function plots a histogram (hst) on a given data frame, and uses simplified calls within the function to parse the histogram by up to variables.
+#' This function plots a histogram (hst) on a given data frame, and uses simplified calls within the function to parse the histogram by up to 2 variables.
 #' @import ggplot2 dplyr purrr
 #' @importFrom stats IQR density
 #' @param df data frame to read in.
-#' @param var1 the variable of interest that should be plotted.
-#' @param by1 a grouping variable by which the histogram for \code{var1} should be parsed.
-#' @param by2 a potential second grouping variable by which the histogram for \code{var1} (already parsed by \code{by1}) should be parsed.
+#' @param var1 the dependent/outcome variable, \eqn{Y}. The variable of interest that should be plotted.
+#' @param by1 the main independent/predictor variable, \eqn{X_1}. A grouping variable by which the histogram for \code{var1} should be parsed.
+#' @param by2 a potential second independent/predictor variable, \eqn{X_2}. A second grouping variable by which the histogram for \code{var1} (already parsed by \code{by1}) should be parsed.
 #' @return This function returns the histogram for \code{var1} in data frame \code{df}. Can be split to return a histogram for \code{var1} in data frame \code{df}, broken out by \code{var2}.
 #' @examples
 #' data <- mtcars
@@ -70,9 +70,9 @@ hst <- function(df, var1, by1, by2){
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x=v1)) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left", na.rm = TRUE) +
       facet_null() +
-      geom_line(data=dens, aes(x=v1, y=(density)), colour="black") +
+      geom_line(data=dens, aes(x=v1, y=(density)), colour="black", na.rm = TRUE) +
       ggtitle(title) + xlab(labx) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
@@ -112,9 +112,9 @@ hst <- function(df, var1, by1, by2){
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left", na.rm = TRUE) +
       facet_null() +
-      geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
+      geom_line(data=dens, aes(x=var1, y=(density)), colour="black", na.rm = TRUE) +
       ggtitle(title) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
@@ -124,7 +124,8 @@ hst <- function(df, var1, by1, by2){
 
   if(bygroups==1) {
     df <- df %>%
-      dplyr::mutate(group = {{ by1 }})
+      dplyr::filter(!is.na({{ by1 }})) %>% #can change this to include NAs if want to compare missingness
+      dplyr::mutate(group = {{ by1 }}) #%>% dplyr::filter(!is.na(group))
     title <- paste0("Histogram of '", deparse(substitute(var1)),"' by '", deparse(substitute(by1)), "'")
     #print(bygroups)
     #dens = split(df, df$group) %>%
@@ -157,9 +158,9 @@ hst <- function(df, var1, by1, by2){
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left", na.rm = TRUE) +
       facet_wrap(~group) +
-      geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
+      geom_line(data=dens, aes(x=var1, y=(density)), colour="black", na.rm = TRUE) +
       ggtitle(title) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
@@ -169,6 +170,8 @@ hst <- function(df, var1, by1, by2){
 
   if(bygroups==2) {
     df <- df %>%
+      dplyr::filter(!is.na({{ by1 }})) %>% #can change this to include NAs if want to compare missingness
+      dplyr::filter(!is.na({{ by2 }})) %>% #can change this to include NAs if want to compare missingness
       mutate(group = paste0({{ by1 }},", ",{{ by2}}))
     title <- paste0("Histogram of '", deparse(substitute(var1)),"' by '", deparse(substitute(by1)),"' and '", deparse(substitute(by2)), "'")
     #print(bygroups)
@@ -201,9 +204,9 @@ hst <- function(df, var1, by1, by2){
     dens <- dens %>% left_join(df2, by="group")
     dens <- dens %>% mutate(density=(density1*bw*n)) #newheight is yheight * bw * length(df)
     p <- ggplot2::ggplot(data = df, aes(x={{ var1 }})) +
-      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left") +
+      geom_histogram(color="black", fill="lightgrey", binwidth = bw, boundary = 0, closed = "left", na.rm = TRUE) +
       facet_wrap(~group) +
-      geom_line(data=dens, aes(x=var1, y=(density)), colour="black") +
+      geom_line(data=dens, aes(x=var1, y=(density)), colour="black", na.rm = TRUE) +
       ggtitle(title) + xlim(c(minx,maxx)) +
       theme_classic() +
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),

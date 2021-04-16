@@ -1,11 +1,11 @@
 #' Simplified Boxplot
 #'
-#' This function plots a Box-and-Whisker (box) on a given data frame, and uses simplified calls within the function to parse the histogram by up to variables.
+#' This function plots a Box-and-Whisker (box) on a given data frame, and uses simplified calls within the function to parse the boxplot by up to 2 variables.
 #' @importFrom graphics boxplot
 #' @param df data frame to read in.
-#' @param var1 the variable of interest that should be plotted.
-#' @param by1 a grouping variable by which the histogram for \code{var1} should be parsed.
-#' @param by2 a potential second grouping variable by which the histogram for \code{var1} (already parsed by \code{by1}) should be parsed.
+#' @param var1 the dependent/outcome variable, \eqn{Y}. The variable of interest that should be plotted.
+#' @param by1 the main independent/predictor variable, \eqn{X_1}. A grouping variable by which the boxplot for \code{var1} should be parsed.
+#' @param by2 a potential second independent/predictor variable, \eqn{X_2}. A second grouping variable by which the boxplot for \code{var1} (already parsed by \code{by1}) should be parsed.
 #' @examples
 #' data <- mtcars
 #'
