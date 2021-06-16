@@ -6,7 +6,7 @@
 \title{General Social Survey, 2014}
 \format{
 A data frame with 2538 observations and 676 variables.
-\tabular{ll}{
+\tabular{ll}{ \cr
  id \tab respondent id number \cr
  age \tab age of respondent \cr
 sex \tab respondents sex \cr
