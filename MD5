@@ -1,5 +1,7 @@
-6b701f962f797e5a33ec4b0ceda14f2b *DESCRIPTION
+11c2ebd2903d560a46308a0397e09375 *DESCRIPTION
 3fa555da5cf8d219ef222d1d89f7cf68 *NAMESPACE
+79bb29f447a47e3ebb30d7e0d289b7ee *R/US_Counties.R
+d2450534ff75058f2ca11489392fa538 *R/US_States.R
 be3f32ad5323dc72e826ed4f71cd31ea *R/box.R
 6173e95b15bee2ff6a740ef0b86f3d2e *R/cormat.R
 206ee970ca649b7734b52dc5ae173e21 *R/crosstabs.R
@@ -13,7 +15,11 @@ c95d186e2147fb4898a63137f22ef9b8 *R/ow.anova.R
 f490e703b37afaafb4cf620684d4dd0c *R/scatter.R
 e2c0a2a5336438acf478eebd32a9aa6e *README.md
 6adc52b72061855a404c43781973f00e *data/GSS2014.RData
+8e44ac7822732f8abf53dab4c5993077 *data/US_Counties.RData
+daf32b14f1f7683fe035db5b8a1bd646 *data/US_States.RData
 d9f4c53fc32a420ac78c58d96abc82ea *man/GSS2014.Rd
+0ece03a4a0735399a9ed50e3128c5317 *man/US_Counties.Rd
+126cf689cae7adb5bf6922ea6a6cb913 *man/US_States.Rd
 957f872a8f15db824c9a53b19d9599f7 *man/box.Rd
 65781762a3c0484c40aaf9d0ac7e5546 *man/cormat.Rd
 50fc0a2bc9eb6336b3d989f08cb9e10c *man/hst.Rd
