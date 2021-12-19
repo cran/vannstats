@@ -1,4 +1,4 @@
-72c42b5b27ea0a50edeff18633ea6843 *DESCRIPTION
+0a2e7b17b7ff87a34d1798e2e948695b *DESCRIPTION
 34aea721a56b7cb4246d87e36a890402 *NAMESPACE
 79bb29f447a47e3ebb30d7e0d289b7ee *R/US_Counties.R
 d2450534ff75058f2ca11489392fa538 *R/US_States.R
@@ -14,7 +14,7 @@ c95d186e2147fb4898a63137f22ef9b8 *R/ow.anova.R
 63900d03591e0f26a705d8b3d6ce4c94 *R/p.corr.R
 9b9ede1e56686977f27e2e87f5de9b8f *R/qq.R
 07936be7402edb4492d6f753567a3f64 *R/residplot.R
-5e41beeb09bd11900d7fa9a516f43172 *R/rm.anova.R
+5929f584722c055ea0af997721bcebd7 *R/rm.anova.R
 f490e703b37afaafb4cf620684d4dd0c *R/scatter.R
 e2c0a2a5336438acf478eebd32a9aa6e *README.md
 6adc52b72061855a404c43781973f00e *data/GSS2014.RData
@@ -35,6 +35,6 @@ a344d4693f6b25dd982053faadda943a *man/mode.Rd
 e030985820ac80597e55ce0d0eae2ec3 *man/p.corr.Rd
 0e13886871de5048931a887cbcb52d06 *man/qq.Rd
 38a1d146d236a716c07c366bd7fddf8b *man/residplot.Rd
-2b521bd09b5fed25ea127f029dc0b3ff *man/rm.anova.Rd
+7ca7f678f4c541dd8a128a88868763b2 *man/rm.anova.Rd
 b3881b736111caafa1097a09dcc07d27 *man/scatter.Rd
 0ed4321463e7c008d84a523dc061787e *man/tab.Rd

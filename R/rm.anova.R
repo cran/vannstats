@@ -6,11 +6,11 @@
 #' @importFrom rlang .data
 #' @param df data frame to read in.
 #' @param id the main grouping variable by which \code{times} will be analyzed
-#' @param times dependent variable values at the time points measured. Read in as a list of time point variables (e.g. \code{c("t1", "t2", "t3", ..., "tn")}), where the values represent the scores at the various time points. Read in as list if data are in wide form. If data are in long form, the \code{times} variable is one column (rather than multiple columns) in the data frame, and must be paired with the \code{scores} variable for actual values (listed below).
+#' @param times dependent variable values at the time points measured. If data are in wide form (where time points are listed as separate variables for each observation), read in as a list of time point variables (e.g. \code{c("t1", "t2", "t3", ..., "tn")}), where the values represent the scores at the various time points. Read in as list if data are in wide form. If data are in long form, the \code{times} variable is one column (rather than multiple columns) in the data frame, and must be paired with the \code{scores} variable for actual values (listed below).
 #' @param scores if data are in long form (where each group has multiple observations), a \code{scores} variable must be read in, which represents the values at the specific time points represented in the \code{times} variable.
 #' @param correct logical (default set to \code{T}). Corrects the results in the repeated measures ANOVA table -- adjusts the degrees of freedom (\eqn{df}) by multiplying the sphericity assumed degrees of freedom (\eqn{df}) by the Greenhouse-Geisser Epsilon value. When set to \code{correct = F}, will print results of repeated measures ANOVA with sphericity assumed.
 #' @param sph logical (default set to \code{F}). When set to \code{sph = T}, will print a sphericity tests table with Mauchly's W, as well as two Epsilon values (Greenhouse-Geisser and Huynh-Feldt).
-#' @param phc logical (default set to \code{F}). When set to \code{sph = T}, will print a post-hoc comparisons table with Bonferroni's adjusted alpha levels (and p-values).
+#' @param phc logical (default set to \code{F}). When set to \code{phc = T}, will print a post-hoc comparisons table with Bonferroni's adjusted alpha levels (and p-values).
 #' @examples
 #' data <- howell_aids_wide
 #' rm.anova(data, student, c("t1","t2","t3"))
@@ -116,8 +116,10 @@ rm.anova <- function(df, id, times, scores=NULL, correct=TRUE, sph=FALSE, phc=FA
     pwc[[11]]
     pwc <- pwc[, c(1, 2, 3, 4, 5, 6, 7, 11, 8, 9, 10)]
     pwc <- pwc[,-c(1,9,10,11)]
-    names(pwc) <- c("Group 1","Group 2","N (Group 1)","N (Group 2)", "t", "df", "p-value (Bonferroni Adjusted)" )
+    names(pwc) <- c("Group 1","Group 2","N (Group 1)","N (Group 2)", "t", "df", "p-value" )
     print(pwc, row.names = FALSE)
+    pwc_note <- "---\nSignif. codes: '***' 0.001 '**' 0.01 '*' 0.05\nNote: p-values adjusted based on Bonferroni's alpha"
+    cat(pwc_note)
     #print(model$sph[[1]], , row.names = FALSE)
     cat("\n")
   }

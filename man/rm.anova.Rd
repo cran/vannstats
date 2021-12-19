@@ -19,7 +19,7 @@ rm.anova(
 
 \item{id}{the main grouping variable by which \code{times} will be analyzed}
 
-\item{times}{dependent variable values at the time points measured. Read in as a list of time point variables (e.g. \code{c("t1", "t2", "t3", ..., "tn")}), where the values represent the scores at the various time points. Read in as list if data are in wide form. If data are in long form, the \code{times} variable is one column (rather than multiple columns) in the data frame, and must be paired with the \code{scores} variable for actual values (listed below).}
+\item{times}{dependent variable values at the time points measured. If data are in wide form (where time points are listed as separate variables for each observation), read in as a list of time point variables (e.g. \code{c("t1", "t2", "t3", ..., "tn")}), where the values represent the scores at the various time points. Read in as list if data are in wide form. If data are in long form, the \code{times} variable is one column (rather than multiple columns) in the data frame, and must be paired with the \code{scores} variable for actual values (listed below).}
 
 \item{scores}{if data are in long form (where each group has multiple observations), a \code{scores} variable must be read in, which represents the values at the specific time points represented in the \code{times} variable.}
 
@@ -27,7 +27,7 @@ rm.anova(
 
 \item{sph}{logical (default set to \code{F}). When set to \code{sph = T}, will print a sphericity tests table with Mauchly's W, as well as two Epsilon values (Greenhouse-Geisser and Huynh-Feldt).}
 
-\item{phc}{logical (default set to \code{F}). When set to \code{sph = T}, will print a post-hoc comparisons table with Bonferroni's adjusted alpha levels (and p-values).}
+\item{phc}{logical (default set to \code{F}). When set to \code{phc = T}, will print a post-hoc comparisons table with Bonferroni's adjusted alpha levels (and p-values).}
 }
 \description{
 This function simplifies the call for repeated measures ANOVA (rm.anova) on a given data frame. Also allows calls for sphericity correction (correct), as well as a sphericity test table (sph).
