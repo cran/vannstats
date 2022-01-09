@@ -3,7 +3,6 @@
 export(box)
 export(cormat)
 export(hst)
-export(ideo.dist)
 export(mode)
 export(ow.anova)
 export(p.corr)

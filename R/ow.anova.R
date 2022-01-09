@@ -29,7 +29,7 @@ ow.anova <- function(df, var1, by1, plot = FALSE, hsd = FALSE){
     #model <- summary(aov(eval(substitute(var1), df) ~ eval(substitute(by1), df)))
     ##rownames(model[[1]]) <- c(deparse(substitute(by1)), "Residuals")
     #rownames(model[[1]]) <- c(btwn, witn)
-    plotmeans(eval(substitute(var1), df) ~ eval(substitute(by1), df), main = "Plot of Group Means with 95% CI", xlab = labx, ylab = laby)
+    {suppressWarnings(plotmeans(eval(substitute(var1), df) ~ eval(substitute(by1), df), main = "Plot of Group Means with 95% CI", xlab = labx, ylab = laby))}
   }
   if(hsd==TRUE){
     v2 <- as.factor(eval(substitute(by1), df))

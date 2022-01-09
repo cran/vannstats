@@ -21,6 +21,8 @@ qq <- function(df, var1, by1, by2){
     laby <- paste0("Observed Value of '",deparse(substitute(df)),"'")
     df <- as.data.frame(df)
     names(df) <- "v1"
+    df <- df %>%
+      dplyr::filter(!is.na(v1))
     p <- ggplot2::ggplot(data = df, aes(sample=v1)) +
       stat_qq(shape = 1) + stat_qq_line() +
       facet_null() +
@@ -32,6 +34,8 @@ qq <- function(df, var1, by1, by2){
   }
 
   if(bygroups==0) {
+    df <- df %>%
+      dplyr::filter(!is.na({{ var1 }}))
     title <- paste0("Normal Q-Q Plot of '", deparse(substitute(var1)), "'")
     laby <- paste0("Observed Value of '",deparse(substitute(var1)),"'")
     p <- ggplot2::ggplot(data = df, aes(sample={{ var1 }})) +
@@ -45,6 +49,8 @@ qq <- function(df, var1, by1, by2){
   }
 
   if(bygroups==1) {
+    df <- df %>%
+      dplyr::filter(!is.na({{ var1 }})) %>% dplyr::filter(!is.na({{ by1 }}))
     df <- df %>%
       mutate(group = {{ by1 }})
     title <- paste0("Normal Q-Q Plot of '", deparse(substitute(var1)),"' by '", deparse(substitute(by1)), "'")
@@ -60,6 +66,8 @@ qq <- function(df, var1, by1, by2){
   }
 
   if(bygroups==2) {
+    df <- df %>%
+      dplyr::filter(!is.na({{ var1 }})) %>% dplyr::filter(!is.na({{ by1 }})) %>% dplyr::filter(!is.na({{ by2 }}))
     df <- df %>%
       mutate(group = paste0({{ by1 }},", ",{{ by2 }}))
     title <- paste0("Normal Q-Q Plot of '",deparse(substitute(var1)),"' by '",deparse(substitute(by1)),"' and '",deparse(substitute(by2)),"'")
