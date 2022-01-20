@@ -1,5 +1,5 @@
-64be0491039e3e6795343e387ef043c4 *DESCRIPTION
-34aea721a56b7cb4246d87e36a890402 *NAMESPACE
+b18b34c5bbaea5a6bbd5a577b8fdf162 *DESCRIPTION
+a939993760e790387a4173a8e9937a9d *NAMESPACE
 be3f32ad5323dc72e826ed4f71cd31ea *R/box.R
 6173e95b15bee2ff6a740ef0b86f3d2e *R/cormat.R
 206ee970ca649b7734b52dc5ae173e21 *R/crosstabs.R
@@ -12,6 +12,7 @@ f21479da9b7453a1cf19657ae98fcdb1 *R/howell_aids_long.R
 63900d03591e0f26a705d8b3d6ce4c94 *R/p.corr.R
 19a808b8328c4f8cc3bae54060dadb90 *R/qq.R
 07936be7402edb4492d6f753567a3f64 *R/residplot.R
+6b3859e1423d04b669aa7c630d2809b8 *R/rev.code.R
 5929f584722c055ea0af997721bcebd7 *R/rm.anova.R
 f490e703b37afaafb4cf620684d4dd0c *R/scatter.R
 e2c0a2a5336438acf478eebd32a9aa6e *README.md
@@ -29,6 +30,7 @@ a344d4693f6b25dd982053faadda943a *man/mode.Rd
 e030985820ac80597e55ce0d0eae2ec3 *man/p.corr.Rd
 0e13886871de5048931a887cbcb52d06 *man/qq.Rd
 38a1d146d236a716c07c366bd7fddf8b *man/residplot.Rd
+f58252b19ea642395caeb36f7edb1fdb *man/revcode.Rd
 7ca7f678f4c541dd8a128a88868763b2 *man/rm.anova.Rd
 b3881b736111caafa1097a09dcc07d27 *man/scatter.Rd
 0ed4321463e7c008d84a523dc061787e *man/tab.Rd
