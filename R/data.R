@@ -1,6 +1,6 @@
 #' General Social Survey, 2014
 #'
-#' This subset of data comes from one iteration of the \emph{General Social Survey}, administered in 2014. These data were collected by the National Opinion Research Center (NORC) at the University of Chicago. The observations represent individuals' responses to survey questions. Information about the data set can be found in the GSS Codebook at: \url{http://burrelvannjr.com/docs/GSS_Codebook.pdf}.
+#' This subset of data comes from one iteration of the \emph{General Social Survey}, administered in 2014. These data were collected by the National Opinion Research Center (NORC) at the University of Chicago. The observations represent individuals' responses to survey questions. Information about the data set can be found in the GSS Codebook at: \url{https://burrelvannjr.com/docs/GSS_Codebook.pdf}.
 #'
 #' @format A data frame with 2538 observations and 676 variables.
 #' \tabular{ll}{ \cr
@@ -682,7 +682,7 @@
 #'	yearval \tab total dollar value of payments in that year \cr
 #' }
 #' @source Data: \url{https://sda.berkeley.edu/sdaweb/analysis/?dataset=gss14}
-#' @source Codebook: \url{http://burrelvannjr.com/docs/GSS_Codebook.pdf}
+#' @source Codebook: \url{https://burrelvannjr.com/docs/GSS_Codebook.pdf}
 
 #'
 "GSS2014"

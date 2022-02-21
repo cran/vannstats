@@ -1,9 +1,10 @@
-b18b34c5bbaea5a6bbd5a577b8fdf162 *DESCRIPTION
-a939993760e790387a4173a8e9937a9d *NAMESPACE
+005eae60610d6c3a1bc191f9d5951eaf *DESCRIPTION
+11e4df9a7a72f9bae985c4bdd30b4963 *NAMESPACE
 be3f32ad5323dc72e826ed4f71cd31ea *R/box.R
 6173e95b15bee2ff6a740ef0b86f3d2e *R/cormat.R
 206ee970ca649b7734b52dc5ae173e21 *R/crosstabs.R
-0bebb9dc28faf3af704ee1de326a120e *R/data.R
+8e59abf855327f24a52362f012327839 *R/data.R
+d46af520e1759680a6595297bff01a6b *R/dummy.R
 f21479da9b7453a1cf19657ae98fcdb1 *R/howell_aids_long.R
 600bc48732e771f52663e1f2c938d157 *R/howell_aids_wide.R
 82df45173380914776fd49ed23d9a122 *R/hst.R
@@ -19,9 +20,10 @@ e2c0a2a5336438acf478eebd32a9aa6e *README.md
 6adc52b72061855a404c43781973f00e *data/GSS2014.RData
 3d38475124f43d2d99d99656215fa644 *data/howell_aids_long.RData
 98cc12f2e841feb57cddeac11dd037b8 *data/howell_aids_wide.RData
-d9f4c53fc32a420ac78c58d96abc82ea *man/GSS2014.Rd
+e1ae02aa79bbd27606bd2bc0468ff8d7 *man/GSS2014.Rd
 957f872a8f15db824c9a53b19d9599f7 *man/box.Rd
 65781762a3c0484c40aaf9d0ac7e5546 *man/cormat.Rd
+441e554187c1ef2fe48c3f9d1d2b5a5b *man/dummy.Rd
 023a64ee98e501fb569b0e6a31ac3cc9 *man/howell_aids_long.Rd
 7818e27ed1d67b030200e6ad0fd1d6a5 *man/howell_aids_wide.Rd
 50fc0a2bc9eb6336b3d989f08cb9e10c *man/hst.Rd

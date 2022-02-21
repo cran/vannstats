@@ -2,6 +2,7 @@
 
 export(box)
 export(cormat)
+export(dummy)
 export(hst)
 export(mode)
 export(ow.anova)
