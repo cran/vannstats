@@ -1,7 +1,8 @@
-be9c0994872a6646d114b7a9f0591b65 *DESCRIPTION
-b8383471f86735d1c6fe231de87c44bd *NAMESPACE
+1521297549a509c5a07416263f692dae *DESCRIPTION
+f2b94e612183e0bd80909934242f7a93 *NAMESPACE
+640d07138a60832668b52fe5e7880aec *R/UCR2015.R
 be3f32ad5323dc72e826ed4f71cd31ea *R/box.R
-b20984178ed24925e40cffbb13a59db0 *R/ci.calc.R
+81b5ad2e2c1998aac98d8c37c8d80c55 *R/ci.calc.R
 6173e95b15bee2ff6a740ef0b86f3d2e *R/cormat.R
 206ee970ca649b7734b52dc5ae173e21 *R/crosstabs.R
 8e59abf855327f24a52362f012327839 *R/data.R
@@ -17,13 +18,16 @@ f21479da9b7453a1cf19657ae98fcdb1 *R/howell_aids_long.R
 6b3859e1423d04b669aa7c630d2809b8 *R/rev.code.R
 5929f584722c055ea0af997721bcebd7 *R/rm.anova.R
 f490e703b37afaafb4cf620684d4dd0c *R/scatter.R
+17b4dbee1045b6d5c6ee0178f43f8a77 *R/z.calc.R
 e2c0a2a5336438acf478eebd32a9aa6e *README.md
 6adc52b72061855a404c43781973f00e *data/GSS2014.RData
+b427992e53fb76e9bdc3280d985d33d9 *data/UCR2015.RData
 3d38475124f43d2d99d99656215fa644 *data/howell_aids_long.RData
 98cc12f2e841feb57cddeac11dd037b8 *data/howell_aids_wide.RData
 e1ae02aa79bbd27606bd2bc0468ff8d7 *man/GSS2014.Rd
+84f718491f56a7ac661bc821641d1a79 *man/UCR2015.Rd
 957f872a8f15db824c9a53b19d9599f7 *man/box.Rd
-e3516152fba537f337527ec0aedd7ebd *man/ci.calc.Rd
+c831d040f7ddbdb742fee92dae33315d *man/ci.calc.Rd
 65781762a3c0484c40aaf9d0ac7e5546 *man/cormat.Rd
 441e554187c1ef2fe48c3f9d1d2b5a5b *man/dummy.Rd
 023a64ee98e501fb569b0e6a31ac3cc9 *man/howell_aids_long.Rd
@@ -38,3 +42,4 @@ f58252b19ea642395caeb36f7edb1fdb *man/revcode.Rd
 7ca7f678f4c541dd8a128a88868763b2 *man/rm.anova.Rd
 b3881b736111caafa1097a09dcc07d27 *man/scatter.Rd
 0ed4321463e7c008d84a523dc061787e *man/tab.Rd
+8bebf89767d6cdac307c4f73c12ac2ea *man/z.calc.Rd

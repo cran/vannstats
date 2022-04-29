@@ -22,5 +22,5 @@ This function calculates the confidence interval (for a given confidence level) 
 \examples{
 data <- mtcars
 
-ci.calc(data,mpg,cl=95)
+ci.calc(data,mpg,95)
 }

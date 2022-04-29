@@ -10,15 +10,19 @@
 #' @examples
 #' data <- mtcars
 #'
-#' ci.calc(data,mpg,cl=95)
+#' ci.calc(data,mpg,95)
 #' @export
 
 
 ci.calc <- function (df, var1, cl){
-  cl <- (cl/100)
-  alpha <- 1 - cl
+  #cl <- (cl/100)
+  #alpha <- 1 - cl
   calls <- length(match.call())-3
   if(calls==0){
+    newcl <- gsub("\\s*\\([^\\)]+\\)","",as.character(match.call()[3]))
+    newcl <- as.numeric(newcl)
+    newcl <- (newcl/100)
+    alpha <- 1 - newcl
     #CI(eval(substitute(var1), df), ci=cl)
     xbar <- mean(df, na.rm = TRUE)
     se <- sd(df, na.rm = TRUE)/sqrt(nobs(df))
@@ -30,6 +34,10 @@ ci.calc <- function (df, var1, cl){
   }
   else {
     #CI(eval(substitute(var1), df), ci=cl)
+    newcl <- gsub("\\s*\\([^\\)]+\\)","",as.character(match.call()[4]))
+    newcl <- as.numeric(newcl)
+    newcl <- (newcl/100)
+    alpha <- 1 - newcl
     xbar <- mean(eval(substitute(var1), df), na.rm = TRUE)
     se <- sd(eval(substitute(var1), df), na.rm = TRUE)/sqrt(nobs(eval(substitute(var1), df)))
     ci_low <- xbar + round(qt(alpha/2, 100000000000), 3) * se
