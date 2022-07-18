@@ -1,5 +1,5 @@
-1521297549a509c5a07416263f692dae *DESCRIPTION
-f2b94e612183e0bd80909934242f7a93 *NAMESPACE
+5d93aebf6ba6c134e5d2553b0d0f0ed1 *DESCRIPTION
+fceaf846fcf11de3ae357762de1d13b0 *NAMESPACE
 640d07138a60832668b52fe5e7880aec *R/UCR2015.R
 be3f32ad5323dc72e826ed4f71cd31ea *R/box.R
 81b5ad2e2c1998aac98d8c37c8d80c55 *R/ci.calc.R
@@ -18,6 +18,7 @@ f21479da9b7453a1cf19657ae98fcdb1 *R/howell_aids_long.R
 6b3859e1423d04b669aa7c630d2809b8 *R/rev.code.R
 5929f584722c055ea0af997721bcebd7 *R/rm.anova.R
 f490e703b37afaafb4cf620684d4dd0c *R/scatter.R
+a946e130c22666cbf4203e0c269fa8c2 *R/stata.plm.margins.R
 17b4dbee1045b6d5c6ee0178f43f8a77 *R/z.calc.R
 e2c0a2a5336438acf478eebd32a9aa6e *README.md
 6adc52b72061855a404c43781973f00e *data/GSS2014.RData
@@ -41,5 +42,6 @@ e030985820ac80597e55ce0d0eae2ec3 *man/p.corr.Rd
 f58252b19ea642395caeb36f7edb1fdb *man/revcode.Rd
 7ca7f678f4c541dd8a128a88868763b2 *man/rm.anova.Rd
 b3881b736111caafa1097a09dcc07d27 *man/scatter.Rd
+85283dc32f3bf5b4fd7a8df227aa1dc1 *man/stata.plm.margins.Rd
 0ed4321463e7c008d84a523dc061787e *man/tab.Rd
 8bebf89767d6cdac307c4f73c12ac2ea *man/z.calc.Rd
