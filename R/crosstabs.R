@@ -21,15 +21,58 @@ tab <- function(df, var1, var2){
   #v2 <- paste0(substitute(df),"$",substitute(var2)) # how to use $ operator in dataframe$variable
   v1 <- (eval(substitute(var1), df))
   v2 <- (eval(substitute(var2), df))
-  crosstab <- chisq.test(v1, v2, correct=FALSE)
-  options(warn=0) # unsuppress warnings for chi square
+  suppressWarnings(crosstab <- chisq.test(v1, v2, correct=FALSE))
+  #options(warn=0) # unsuppress warnings for chi square
   crosstab$data.name <- paste0(deparse(substitute(var1)), " and ", deparse(substitute(var2)))
   names(dimnames(crosstab$observed)) <- c(deparse(substitute(var1)),deparse(substitute(var2)))
   names(dimnames(crosstab$expected)) <- c(deparse(substitute(var1)),deparse(substitute(var2)))
   #crosstab$observed
   #crosstab$expected
-  tab <- list(crosstab$observed, crosstab$expected)
-  names(tab) <- c("Observed Frequencies","Expected Frquencies")
+
+  rowmarg <- NULL
+  for(i in 1:dim(crosstab$observed)[1]){
+    i_rmarg <- sum(crosstab$observed[i,])
+    rowmarg <- c(rowmarg,i_rmarg)
+  }
+  #print(rowmarg)
+
+  colmarg <- NULL
+  for(i in 1:dim(crosstab$observed)[2]){
+    i_cmarg <- sum(crosstab$observed[,i])
+    colmarg <- c(colmarg,i_cmarg)
+  }
+
+  tot_tot <- sum(colmarg)
+  colmarg <- c(colmarg,tot_tot)
+
+  obs <- as.matrix(crosstab$observed)
+  ex <- as.matrix(crosstab$expected)
+  endcol <- dim(crosstab$observed)[2] + 1
+  endrow <- dim(crosstab$observed)[1] + 1
+  #print(endrow)
+  #print(endcol)
+  #print(colmarg)
+  #print(endcol)
+  obs <- cbind(obs,rowmarg)
+  obs <- rbind(obs,colmarg)
+  ex <- cbind(ex,rowmarg)
+  ex <- rbind(ex,colmarg)
+  #print(dimnames(obs))
+
+  dimnames(obs)[[1]][endrow] <- "Total"
+  dimnames(obs)[[2]][endcol] <- "Total"
+  dimnames(ex)[[1]][endrow] <- "Total"
+  dimnames(ex)[[2]][endcol] <- "Total"
+
+  #print(dimnames(obs))
+  #print(endcol)
+  #print(obs)
+
+
+
+  #tab <- list(crosstab$observed, crosstab$expected)
+  tab <- list(obs, ex)
+  names(tab) <- c("Observed Frequencies","Expected Frequencies")
   return(tab)
 }
 

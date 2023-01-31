@@ -1,0 +1,180 @@
+#' Simplified Chi Square
+#'
+#' This function simplifies the call for Pearson's Chi Square test (chi.sq) on a given data frame.
+#' @importFrom stats chisq.test pchisq qchisq qnorm p.adjust
+#' @param df data frame to read in.
+#' @param var1 the dependent/outcome variable, \eqn{Y}.
+#' @param var2 the main independent/predictor variable, \eqn{X}.
+#' @param correct logical (default set to \code{F}). When set to \code{correct = T}, will employ Yates' continuity correction (for data that violate the normality assumption).
+#' @param post logical (default set to \code{F}). When set to \code{post = T}, will return results of post-hoc (Z) tests using Bonferroni's alpha adjustment.
+#' @return This function returns the summary results table for a Pearson's Chi Square test, examining the relationship between \code{var1} from data frame \code{df}, and \code{var2}.
+#' @examples
+#' data <- mtcars
+#'
+#' chi.sq(data,vs,am)
+#' @export
+
+chi.sq <- function(df, var1, var2, correct = FALSE, post = FALSE){
+  #options(scipen=999)
+  #suppressWarnings({})
+  v1 <- deparse(substitute(var1))
+  v2 <- deparse(substitute(var2))
+  {suppressWarnings(model <- chisq.test(eval(substitute(var1), df), eval(substitute(var2), df), correct = FALSE))}
+  modname <- model$method
+  df_1 <- model$parameter[[1]]
+  crit <- qchisq(p=.95, df=df_1)
+  ch_text <- "\u03C7\U00B2"
+  ch_c_text <- paste0("Critical ",ch_text)
+  model$statistic[2] <- round(crit, 3)
+  names(model$statistic) <- c(ch_text,ch_c_text)
+
+  if(correct == TRUE){
+    {suppressWarnings(model <- chisq.test(eval(substitute(var1), df), eval(substitute(var2), df), correct = TRUE))}
+    modname <- model$method
+    df_1 <- model$parameter[[1]]
+    crit <- qchisq(p=.95, df=df_1)
+    ch_text <- "\u03C7\U00B2"
+    ch_c_text <- paste0("Critical ",ch_text)
+    model$statistic[2] <- round(crit, 3)
+    names(model$statistic) <- c(ch_text,ch_c_text)
+  }
+
+  model$data.name <- paste0(deparse(substitute(var1))," and ", deparse(substitute(var2)))
+
+  #print(model$residuals)
+  #print(model$stdres)
+
+  if(post == TRUE){
+    method = "bonferroni"
+    round = 2
+    stdres <- as.matrix(model$stdres)
+    #get dim num of matrix
+    dim(stdres)
+    #get dim num of matrix rows (dv)
+    v1num <- dim(stdres)[1] #dv
+    #get dim num of matrix cols (iv)
+    v2num <- dim(stdres)[2] #iv
+    #get attributes of rows, in order (this is DV)
+    v1names <- dimnames(stdres)[[1]] #dv
+    #get attributes of columns, in order (this is IV)
+    v2names <- dimnames(stdres)[[2]] #iv
+    #get chi square values from standardized residuals, by squaring the values in the matrix
+    chisq_values <- stdres^2
+    #get pvalues for chi square
+    p_vals <- pchisq(chisq_values, 1, lower.tail = FALSE)
+    #crit <- qchisq(p=.95, df=1)
+    #crit_round <- round(crit, 2)
+    #z_crit <- sqrt(crit)
+    #print(z_crit)
+    adj_p_vals <- p_vals
+    #print(p_vals)
+    for (i in 1:nrow(adj_p_vals)) {
+      adj_p_vals[i, ] <- p.adjust(
+        adj_p_vals[i, ],
+        method = method,
+        n = ncol(adj_p_vals) * nrow(adj_p_vals)
+      )
+    }
+
+    z_crit <- qnorm(p=1-((.05/2)/(  ncol(adj_p_vals) * nrow(adj_p_vals)  )))
+    z_crit_round <- round(z_crit, 2)
+    crit <- z_crit^2
+    crit_round <- round(crit, 2)
+    #print(z_crit_round)
+    #print(crit_round)
+
+
+    v1_names <- rep(v1names, v2num) #dv
+    v2_names <- NULL #iv
+    for(v2 in v2names){
+      v2_names_pre <- rep(v2, v1num) #iv
+      v2_names <- c(v2_names,v2_names_pre)
+    }
+    bonf <-
+      as.data.frame(matrix(
+        data = NA,
+        #nrow = nrow(adj_p_vals) * 2,
+        #ncol = ncol(adj_p_vals) + 2
+        nrow = nrow(adj_p_vals) * ncol(adj_p_vals),
+        ncol = 4
+      ))
+
+    stdresvals <- NULL
+    adjpvals <- NULL
+    chi2vals <- NULL
+    for(i in 1:v2num){
+      for(j in 1:v1num){
+        stdresvals <- c(stdresvals,stdres[j,i])
+        adjpvals <- c(adjpvals,adj_p_vals[j,i])
+        chi2vals <- c(chi2vals,chisq_values[j,i])
+      }
+    }
+
+    chi2vals_round <- round(chi2vals, 2)
+    stdresvals_round <- round(stdresvals, 2)
+
+    bonf[,1] <- v2_names #iv
+    bonf[,2] <- v1_names #dv
+    bonf[,3] <- stdresvals
+    #bonf[,4] <- chi2vals
+    #bonf[,5] <- adjpvals
+    bonf[,4] <- adjpvals
+
+    #colnames(bonf) <- c(deparse(substitute(var2)), deparse(substitute(var1)), "Adj. Standardized Residual (Z)", "Chi Square", "Adj. p-value")
+    colnames(bonf) <- c(deparse(substitute(var2)), deparse(substitute(var1)), "Adj. Standardized Residual (Z)", "Adj. p-value")
+
+    bonf2 <-
+      as.data.frame(matrix(
+        data = NA,
+        #nrow = nrow(adj_p_vals) * 2,
+        #ncol = ncol(adj_p_vals) + 2
+        nrow = nrow(adj_p_vals) * ncol(adj_p_vals),
+        ncol = 2
+      ))
+
+    grouping <- paste0(v2_names, " * ", v1_names)
+
+    bonf2[,1] <- grouping #group
+    bonf2[,2] <- chi2vals #chi2
+    bonf2[,3] <- adjpvals
+
+    bonf3 <- bonf2
+    bonf3[,4] <- chi2vals_round
+    bonf3[,5] <- stdresvals_round
+
+    #ch_text <- "\u03C7\U00B2"
+
+    newList <- list(model = model, "Post-Hoc Test w/ Bonferroni Adjustment" = bonf)
+    return(newList)
+
+    #if(plot == TRUE){
+      #plotmax <- nrow(bonf3)
+      #title <- paste0("Bar Chart of ", ch_text, " Values")
+      #labx <- "Intersection of Categories"
+      #laby <- paste0(ch_text," Value")
+      #bonf2 <- as.data.frame(bonf3)
+      #p <- ggplot2::ggplot(data = bonf3, aes(x=as.factor(grouping), y = chi2vals)) +
+      ##ggplot2::ggplot(data = bonf3, aes(x=as.factor(grouping), y = chi2vals)) +
+      #  geom_bar(stat = "identity") +
+      #  scale_fill_brewer(palette="Blues") +
+      #  #geom_text(stat='identity', aes(label=paste0("n = ",Frequency)), vjust=-1) +
+      #  ggtitle(title) + xlab(labx) + ylab(laby) +
+      #  geom_hline(yintercept = crit, color="red") +
+      #  geom_text(aes(plotmax, crit, label = paste0("Critical ", ch_text, " = ", crit_round), vjust = -1), color = "red") +
+      #  geom_label_repel(stat='identity', aes(label = paste0(ch_text, " = ", chi2vals_round, "\nZ = ", stdresvals_round)),
+      #                   size = 4, nudge_x = 1, show.legend = FALSE) +
+      #  theme_classic() +
+      #  theme(axis.text.x = element_text(angle = 65)) +
+      #  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(),
+      #        axis.line = element_line(colour = "black"), axis.text.x = element_text(vjust=0.5, colour="#000000"),
+      #        axis.text.y = element_text(face="bold", colour="#000000"), plot.title = element_text(hjust = 0.5, lineheight=1.5, face="bold"))
+
+      #newList <- list(model = model, "Post-Hoc Test w/ Bonferroni Adjustment" = bonf, plot = p)
+      #return(newList)
+      #print(p)
+      #return(p)
+  #}
+  }
+
+  return(model)
+}

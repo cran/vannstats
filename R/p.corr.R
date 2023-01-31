@@ -17,8 +17,17 @@ p.corr <- function(df, var1, var2){
   model <- cor.test(eval(substitute(var1), df), eval(substitute(var2), df))
   t <- model$statistic
   model$statistic <- model$estimate
-  names(model$statistic) <- "r"
+  names(model$statistic) <- "\U1D493" #"\u0072" #"\u0072\U00B2" #U1D493
   model$estimate <- t
+  names(model$estimate) <- "\U1D495" #bold italic t #"\U1D461"#reg italic t
+  #(model$p.value,"names") <- "p"
+  #names(model$p.value) <- "\U1D45D" #\U1D45D == p italic
   model$data.name <- paste0(deparse(substitute(var1))," and ", deparse(substitute(var2)))
+  df_1 <- model$parameter[[1]]
+  crit_t <- (-qt(0.025,df_1))
+  #print(crit_t)
+  crit_r2 <- ((crit_t^2) / ((crit_t^2) + df_1))
+  crit_r <- sqrt(crit_r2)
+  #print(crit_r)
   return(model)
 }
