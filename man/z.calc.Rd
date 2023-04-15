@@ -4,14 +4,14 @@
 \alias{z.calc}
 \title{Simplified Z Scores}
 \usage{
-z.calc(df, var1, x, tails = NULL)
+z.calc(df, var1, raw, tails = NULL)
 }
 \arguments{
 \item{df}{data frame to read in.}
 
 \item{var1}{the variable of interest for which the mean and standard deviations will be calculated.}
 
-\item{x}{the desired raw score to compare with the mean and standard deviation of \code{var1}.}
+\item{raw}{the desired raw score to compare with the mean and standard deviation of \code{var1}.}
 
 \item{tails}{to report a p-value (level of significance) for the reported Z score, user must select a desired number of tails (either \code{tails = 1} for a one-tailed test, or \code{tails = 2} for a two-tailed test). Default set to \code{NULL}, and does not report a p-value.}
 }

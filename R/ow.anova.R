@@ -23,7 +23,10 @@ ow.anova <- function(df, var1, by1, plot = FALSE, hsd = FALSE){
   witn <- paste0("Within Groups (",deparse(substitute(by1)),")")
   model <- summary(aov(eval(substitute(var1), df) ~ factor(eval(substitute(by1), df))))
   #rownames(model[[1]]) <- c(deparse(substitute(by1)), "Residuals")
-  #colnames(model[[1]]) <- c("df", "Sum Sq", "Mean Sq", "F value", "p")
+  italic_p <- "\U1D45D"
+  italic_F <- "\U1D46D"
+  #colnames(model[[1]]) <- c("df", "SS", "MS", "F", "p")
+  colnames(model[[1]]) <- c("df", "SS", "MS", italic_F, italic_p)
   rownames(model[[1]]) <- c(btwn, witn)
   if(plot==TRUE){
     #model <- summary(aov(eval(substitute(var1), df) ~ eval(substitute(by1), df)))
@@ -43,7 +46,7 @@ ow.anova <- function(df, var1, by1, plot = FALSE, hsd = FALSE){
     #b[,5][b[,4]<=.05] <- "*"
     #b[,5][b[,4]<=.01] <- "**"
     #b[,5][b[,4]<=.001] <- "***"
-    #colnames(b) <- c("diff", "lwr", "upr", "p adj", "")
+    #colnames(b) <- c("diff", "lwr", "upr", italp)
     #return(b)
     list <- c(model, tukey)
     names(list) <- c("Analysis of Variance (ANOVA)","Tukey's HSD (Honestly Significant Difference)")

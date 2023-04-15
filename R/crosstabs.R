@@ -59,10 +59,16 @@ tab <- function(df, var1, var2){
   ex <- rbind(ex,colmarg)
   #print(dimnames(obs))
 
-  dimnames(obs)[[1]][endrow] <- "Total"
-  dimnames(obs)[[2]][endcol] <- "Total"
-  dimnames(ex)[[1]][endrow] <- "Total"
-  dimnames(ex)[[2]][endcol] <- "Total"
+  dimnames(obs)[[1]][endrow] <- "Total" #paste0("Col. Total", " (", deparse(substitute(var2)), "):")
+  dimnames(obs)[[2]][endcol] <- "Total" #paste0("Row Total", " (", deparse(substitute(var1)), "):")
+  dimnames(obs)[[1]][1] <- paste0(deparse(substitute(var1)), ": ", dimnames(obs)[[1]][1])
+  dimnames(obs)[[2]][1] <- paste0(deparse(substitute(var2)), ": ", dimnames(obs)[[2]][1])
+
+  dimnames(ex)[[1]][endrow] <- "Total" #paste0("Col Total", " (", deparse(substitute(var2)), "):")
+  dimnames(ex)[[2]][endcol] <- "Total" #paste0("Row Total", " (", deparse(substitute(var1)), "):")
+  dimnames(ex)[[1]][1] <- paste0(deparse(substitute(var1)), ": ", dimnames(ex)[[1]][1])
+  dimnames(ex)[[2]][1] <- paste0(deparse(substitute(var2)), ": ", dimnames(ex)[[2]][1])
+
 
   #print(dimnames(obs))
   #print(endcol)
