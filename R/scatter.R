@@ -36,10 +36,6 @@ scatter <- function(df, var1, var2, lab = FALSE){
   main <- paste0("Scatterplot of '", deparse(substitute(var1)),"' and '", deparse(substitute(var2)),"'")
   labx <- deparse(substitute(var2))
   laby <- deparse(substitute(var1))
-  ycoord <- ( max(eval(substitute(var1), df), na.rm = T) - min(eval(substitute(var1), df), na.rm = T) ) * .80
-  xcoord <- ( max(eval(substitute(var2), df), na.rm = T) - min(eval(substitute(var2), df), na.rm = T) ) * .80
-  #print(ycoord)
-  #print(xcoord)
   model <- cor.test(eval(substitute(var1), df), eval(substitute(var2), df))
   r_val <- model$estimate[[1]]
   r_val_round <- round(r_val, 4)
@@ -47,6 +43,20 @@ scatter <- function(df, var1, var2, lab = FALSE){
   r_text2 <- paste0(r_text, " = ", r_val_round)
   plot(eval(substitute(var2), df), eval(substitute(var1), df), main = main, xlab = labx, ylab = laby)
   abline(lm(eval(substitute(var1), df)~eval(substitute(var2), df)), col="Blue")
+
+  if(r_val <= 0){
+    ycoord <- ( ( max(eval(substitute(var1), df), na.rm = T) - min(eval(substitute(var1), df), na.rm = T) ) * .90) + min(eval(substitute(var1), df), na.rm = T)
+    xcoord <- ( ( max(eval(substitute(var2), df), na.rm = T) - min(eval(substitute(var2), df), na.rm = T) ) * .90) + min(eval(substitute(var2), df), na.rm = T)
+  }
+
+  if(r_val > 0){
+    ycoord <- max(eval(substitute(var1), df), na.rm = T) - ( ( max(eval(substitute(var1), df), na.rm = T) - min(eval(substitute(var1), df), na.rm = T) ) * .90)
+    xcoord <- ( ( max(eval(substitute(var2), df), na.rm = T) - min(eval(substitute(var2), df), na.rm = T) ) * .90) + min(eval(substitute(var2), df), na.rm = T)
+  }
+
+  #print(ycoord)
+  #print(xcoord)
+
   if(lab == TRUE){
     text(xcoord, ycoord, r_text2, cex = 1.35, col = "red")
   }
