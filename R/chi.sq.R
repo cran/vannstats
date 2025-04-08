@@ -9,11 +9,13 @@
 #' @param post logical (default set to \code{F}). When set to \code{post = T}, will return results of post-hoc (Z) tests of the standardized residual for each cell (the standardized difference between observed and expected frequencies), using Bonferroni's alpha adjustment, and returns an adjusted p-value for each cell/comparison.
 #' @param cramer logical (default set to \code{F}). When set to \code{post = T}, will return results of Cramer's V, a measure of the strength of the association between the two variables.
 #' @return This function returns the summary results table for a Pearson's Chi Square test, examining the relationship between \code{var1} from data frame \code{df}, and \code{var2}.
+#' @export
 #' @examples
 #' data <- mtcars
 #'
-#' chi.sq(data,vs,am)
-#' @export
+#' x2 <- chi.sq(data,vs,am)
+#' summary(x2)
+#'
 
 chi.sq <- function(df, var1, var2, correct = FALSE, post = FALSE, cramer = FALSE){
   #options(scipen=999)
@@ -227,7 +229,7 @@ chi.sq <- function(df, var1, var2, correct = FALSE, post = FALSE, cramer = FALSE
 
   return.obj <- list(call = match.call(), results = out.mat, name = model$method, comparison = compare.name,
                      post_hoc = post_hoc, cramers = cramers)
-  class(return.obj) <- "summary.chi.sq"
+  class(return.obj) <- "chisquare"
   return.obj
 
   #return(model)

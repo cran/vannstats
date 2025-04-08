@@ -112,7 +112,7 @@ gambling_lottery_pct \tab Number and lottery (as percent of total county populat
 }
 }
 \source{
-Data: \url{https://www.icpsr.umich.edu/web/NACJD/studies/36794} and \url{https://data.census.gov/mdat/#/search?ds=ACSPUMS5Y2009}
+Data: \url{https://www.icpsr.umich.edu/web/NACJD/studies/36794} and \url{https://data.census.gov/app/mdat/ACSPUMS1Y2023}
 
 Codebook: \url{https://burrelvannjr.com/docs/UCR2015_Codebook.pdf}
 }

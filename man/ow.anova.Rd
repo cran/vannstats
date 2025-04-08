@@ -26,5 +26,6 @@ This function simplifies the call for one-way ANOVA (ow.anova) on a given data f
 \examples{
 data <- mtcars
 
-ow.anova(data,mpg,cyl,plot=TRUE)
+ow <- ow.anova(data,mpg,cyl,plot=TRUE)
+summary(ow)
 }

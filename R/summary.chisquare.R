@@ -5,15 +5,18 @@
 #' @param object Object returned by \code{\link{chi.sq}}.
 #' @param ... Additional parameters to pass on.
 #' @return Matrix of values for results from chi square test.
+#' @export
 #' @examples
 #' data1 <- mtcars
 #' x2 <- chi.sq(data1, vs, am)
 #'
 #' summary(x2)
-summary.chi.sq <- function(object, ...){
+#'
+summary.chisquare <- function(object, ...){
   cat("Call:\n")
   print(object$call)
   cat("\n")
+  #cat(paste0(object$call,": \n"))
   cat(paste0(object$name,": \n"))
   cat("\n")
   printCoefmat(object$results, signif.stars = T)

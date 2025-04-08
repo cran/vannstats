@@ -28,5 +28,7 @@ This function simplifies the call for Pearson's Chi Square test (chi.sq) on a gi
 \examples{
 data <- mtcars
 
-chi.sq(data,vs,am)
+x2 <- chi.sq(data,vs,am)
+summary(x2)
+
 }
