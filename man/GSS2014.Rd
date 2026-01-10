@@ -9,7 +9,7 @@ A data frame with 2538 observations and 676 variables.
 \tabular{ll}{ \cr
  id \tab respondent id number \cr
  age \tab age of respondent \cr
-sex \tab respondents sex \cr
+sex \tab respondents sex (1 = Male, 2 = Female) \cr
 race \tab race of respondent \cr
 educ \tab highest year of school completed \cr
 dipged \tab diploma, ged, or other \cr

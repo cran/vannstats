@@ -4,7 +4,15 @@
 \alias{chi.sq}
 \title{Simplified Chi Square}
 \usage{
-chi.sq(df, var1, var2, correct = FALSE, post = FALSE, cramer = FALSE)
+chi.sq(
+  df,
+  var1,
+  var2,
+  correct = FALSE,
+  post = FALSE,
+  plot = FALSE,
+  cramer = FALSE
+)
 }
 \arguments{
 \item{df}{data frame to read in.}
@@ -16,6 +24,8 @@ chi.sq(df, var1, var2, correct = FALSE, post = FALSE, cramer = FALSE)
 \item{correct}{logical (default set to \code{F}). When set to \code{correct = T}, will employ Yates' continuity correction (for data that violate the normality assumption).}
 
 \item{post}{logical (default set to \code{F}). When set to \code{post = T}, will return results of post-hoc (Z) tests of the standardized residual for each cell (the standardized difference between observed and expected frequencies), using Bonferroni's alpha adjustment, and returns an adjusted p-value for each cell/comparison.}
+
+\item{plot}{logical (default set to \code{F}). When set to \code{plot = T}, will print a corrplot-style plot for showing both the value of difference between the standardized residual (Z) and the related level of significance of this difference (for each cell comparison) as well as a gradient color representing the relative value of this residual. Will also return results of post-hoc (Z) tests of the standardized residual for each cell (the standardized difference between observed and expected frequencies), using Bonferroni's alpha adjustment, and returns an adjusted p-value for each cell/comparison.}
 
 \item{cramer}{logical (default set to \code{F}). When set to \code{post = T}, will return results of Cramer's V, a measure of the strength of the association between the two variables.}
 }
