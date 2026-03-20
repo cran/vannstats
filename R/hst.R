@@ -24,6 +24,8 @@ hst <- function(df, var1, by1, by2){
   bygroups <- length(match.call())-3
   n1 <- deparse(substitute(var1))
   n1 <- as.character(n1)
+  #if(class(df)[1]!="data.frame")
+  # df <- as.data.frame(df)
   if(bygroups==-1) {
     title <- paste0("Histogram of '", deparse(substitute(df)), "'")
     labx <- deparse(substitute(df))
@@ -81,6 +83,7 @@ hst <- function(df, var1, by1, by2){
   }
   if(bygroups==0) {
     title <- paste0("Histogram of '", deparse(substitute(var1)), "'")
+    df <- as.data.frame(df)
     df <- df %>%
       mutate(group = "group")
     dens = split(df, df$group) %>%
@@ -123,6 +126,7 @@ hst <- function(df, var1, by1, by2){
   }
 
   if(bygroups==1) {
+    df <- as.data.frame(df)
     df <- df %>%
       dplyr::filter(!is.na({{ by1 }})) %>% #can change this to include NAs if want to compare missingness
       dplyr::mutate(group = {{ by1 }}) #%>% dplyr::filter(!is.na(group))
@@ -169,6 +173,7 @@ hst <- function(df, var1, by1, by2){
   }
 
   if(bygroups==2) {
+    df <- as.data.frame(df)
     df <- df %>%
       dplyr::filter(!is.na({{ by1 }})) %>% #can change this to include NAs if want to compare missingness
       dplyr::filter(!is.na({{ by2 }})) %>% #can change this to include NAs if want to compare missingness

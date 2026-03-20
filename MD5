@@ -1,5 +1,5 @@
-9bb6e8fd284d97e96b55e9740ab0d5fa *DESCRIPTION
-78266a4fcca8d60269dd73cca6415da3 *NAMESPACE
+82f7bb633a51172ace3a2f5b4a6c4c0d *DESCRIPTION
+14dd14a1ac1cd8f4a00a3b8b59af1ac5 *NAMESPACE
 bef99175c2374a296f526bcd7e5ef3d9 *R/Defendants2025.R
 a24c523bff6b720ecf6f7152437a7ae8 *R/UCR2015.R
 d4194488095f106a29ef8bf0bc35e56b *R/WBBN2019.R
@@ -14,11 +14,13 @@ f14bea4f6c04342628f370268ed77cb2 *R/data.R
 d46af520e1759680a6595297bff01a6b *R/dummy.R
 f21479da9b7453a1cf19657ae98fcdb1 *R/howell_aids_long.R
 600bc48732e771f52663e1f2c938d157 *R/howell_aids_wide.R
-82df45173380914776fd49ed23d9a122 *R/hst.R
+216a8470f11072951219e9e249dc429a *R/hst.R
 dffab9d0e45edb8ccd4c09f669508134 *R/is.t.R
 6aeffc4c0b297964bbb4216286e77c60 *R/mode.R
+d716c8a8b37ac7fa9b6891a2da6f64ea *R/os.t.R
 f89a1a85b3c46864b929e9ffab51f126 *R/ow.anova.R
 0656a728f767c44b9531405e80dd16fb *R/p.corr.R
+4d6dbf6db13bddad00bdc2c1e848a75f *R/ps.t.R
 16b1d912a1a7369cbdf8824336cff479 *R/qq.R
 07936be7402edb4492d6f753567a3f64 *R/residplot.R
 6b3859e1423d04b669aa7c630d2809b8 *R/rev.code.R
@@ -29,6 +31,8 @@ a946e130c22666cbf4203e0c269fa8c2 *R/stata.plm.margins.R
 23a619002bf6ace319d7755555105bba *R/summary.chisquare.R
 024e699b06c5554261c1373abda100b4 *R/summary.ist.R
 3bc87c85082a4830494d90e83cc0d85f *R/summary.oneway.R
+a79e95bb0c0513fec486b5b5f532c3a4 *R/summary.ost.R
+0f39e37d32e9ca13c73d136a35cb1f95 *R/summary.pst.R
 feed1c5eb15a115b201a6bbd1de1cbc6 *R/univ.desc.R
 3cf2f376917e9472c45ee61e50bb1c9f *R/z.calc.R
 c5fbc47ce8bb178928f76d76f68078a0 *R/z.test.R
@@ -55,8 +59,10 @@ c831d040f7ddbdb742fee92dae33315d *man/ci.calc.Rd
 50fc0a2bc9eb6336b3d989f08cb9e10c *man/hst.Rd
 36683b1a95f54d290dbcdadb4e13749e *man/is.t.Rd
 a344d4693f6b25dd982053faadda943a *man/mode.Rd
+e32a09cc450aa151ddc6ee61e10c4a12 *man/os.t.Rd
 6f87130b181b6f563412e4eba90a0d4b *man/ow.anova.Rd
 e030985820ac80597e55ce0d0eae2ec3 *man/p.corr.Rd
+c99942ee25412811b22813230555b434 *man/ps.t.Rd
 0e13886871de5048931a887cbcb52d06 *man/qq.Rd
 38a1d146d236a716c07c366bd7fddf8b *man/residplot.Rd
 f58252b19ea642395caeb36f7edb1fdb *man/revcode.Rd
@@ -67,6 +73,8 @@ f58252b19ea642395caeb36f7edb1fdb *man/revcode.Rd
 17d09cedd4437c9cb0bc0bdc0ea6d68f *man/summary.chisquare.Rd
 6b57c940bdba305f2ffa273176b2883b *man/summary.ist.Rd
 4c5441b80a5174980b4ac56e2de01bcd *man/summary.oneway.Rd
+a2808b156eba2de840807161a530c406 *man/summary.ost.Rd
+862613ef040ce48f9f75e4522d1b66ee *man/summary.pst.Rd
 0ed4321463e7c008d84a523dc061787e *man/tab.Rd
 aa836c7c2cec4d7b1ee1d06466bbd1cc *man/univ.desc.Rd
 caab463b07da7a671226244d8a45ded0 *man/z.calc.Rd
